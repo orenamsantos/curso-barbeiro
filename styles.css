@@ -238,16 +238,28 @@ table {
     font-weight: 600;
 }
 
-.certificado p{
+.certificado .feed{
     text-align: center;
     width: 60%;
     font-weight: 400;
+}
+
+.certificado .p{
+    margin-top: 0.5rem;
+    color: var(--cor-secundaria);
+    background-color: var(--cor-primaria);
+    padding: 10px;
+    font-size: 9px;
+    font-weight: 800;
+    border-radius: 50px;
+   
 }
 
 
 .certificado ul {
     display: flex;
     margin: 2rem;
+    margin-bottom: 0;
 }
 
 .certificado ul li img{
@@ -257,7 +269,7 @@ table {
 }
 
 
-@media (max-width: 868px){
+@media (max-width: 968px){
 
     .certificado ul {
         display: flex;
