@@ -269,7 +269,7 @@ table {
 }
 
 
-@media (max-width: 968px){
+@media (max-width: 1200px){
 
     .certificado ul {
         display: flex;
