@@ -394,6 +394,10 @@ main{
     background-color: #3bcb79; /* Cor de fundo ao passar o mouse */
 }
 
+.img-pagamento img{
+    margin-bottom: 5rem;
+}
+
 @media (max-width: 768px){
 
     .conatinerPreco{
@@ -422,5 +426,99 @@ main{
         width: 280px;
     }
   
+
+}
+
+
+
+
+.bg03 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw; 
+    background-color: white;
+    padding: 20px;
+}
+
+.bg03logo{
+    width: 150px;
+    margin-top: 5rem;
+}
+
+.bg03 h2{
+    font-size: 30px;
+}
+
+.bg03 h3{
+    font-weight: 800;
+}
+
+.bg03 .imgs {
+    display: flex;
+    justify-content: center;
+}
+
+.imgs img{
+    width: 250px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+
+.carousel-container {
+    overflow: hidden;
+    width: 80%; /* Defina a largura desejada para o carrossel */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.carousel-wrapper {
+    display: flex;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease; /* Animação suave para o deslizamento */
+}
+
+.carousel-slide img {
+    width: calc(100% / 4); /* Cada imagem ocupa 25% do espaço disponível */
+    flex: 0 0 auto; /* Impede que as imagens se redimensionem */
+    object-fit: cover; /* Redimensiona a imagem para caber no container */
+}
+
+
+
+
+
+
+
+
+@media (max-width: 968px){
+
+    .bg03 h2{
+        font-size: 30px;
+       
+    }
+    
+    .bg03 h3{
+        width: 100%;
+        font-weight: 800;
+        margin-bottom: 1rem;
+    }
+    
+    .bg03 .imgs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .imgs img{
+        width: 250px;
+        margin: 20px;
+        border-radius: 10px;
+    }
+    
 
 }
