@@ -466,30 +466,45 @@ main{
 }
 
 
-.carousel-container {
+/* style.css */
+.slider-container {
+    position: relative;
+    width: 80%;
+    margin: auto;
     overflow: hidden;
-    width: 80%; /* Defina a largura desejada para o carrossel */
-    margin: 0 auto; /* Centraliza horizontalmente */
 }
 
-.carousel-wrapper {
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-slide {
     display: flex;
 }
 
-.carousel-slide {
-    display: flex;
-    transition: transform 0.5s ease; /* Animação suave para o deslizamento */
+.slider-slide img {
+    width: 100%; /* Largura de uma imagem */
 }
 
-.carousel-slide img {
-    width: calc(100% / 4); /* Cada imagem ocupa 25% do espaço disponível */
-    flex: 0 0 auto; /* Impede que as imagens se redimensionem */
-    object-fit: cover; /* Redimensiona a imagem para caber no container */
+#prevBtn, #nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
 }
 
+#prevBtn {
+    left: 0;
+}
 
-
-
+#nextBtn {
+    right: 0;
+}
 
 
 
@@ -522,3 +537,166 @@ main{
     
 
 }
+
+
+/* style.css */
+.wrapper {
+    max-width: 1100px;
+    width: 100%;
+    position: relative;
+    margin: auto;
+}
+
+.wrapper i {
+    margin-top: 20px;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    font-size: 1.25rem;
+    position: absolute;
+    text-align: center;
+    line-height: 50px;
+    background: #161616;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+    transition: transform 0.1s linear;
+    bottom: -40px; /* Posiciona os botões abaixo do carrossel */
+}
+
+.wrapper i:active {
+    transform: scale(0.85);
+}
+
+.wrapper i:first-child {
+    left: calc(50% - 100px); /* Posiciona o botão esquerdo mais próximo do centro */
+}
+
+.wrapper i:last-child {
+    right: calc(50% - 100px); /* Posiciona o botão direito mais próximo do centro */
+}
+
+.wrapper .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 4) - 8px); /* Ajustar para 4 imagens visíveis e diminuir espaçamento */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 8px; /* Diminuir espaçamento entre as imagens */
+    border-radius: 8px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.wrapper button{
+    background-color: #646464;
+    font-weight: 500;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    font-size: 25px;
+    color: var(--cor-primaria);
+}
+
+
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel.no-transition {
+    scroll-behavior: auto;
+}
+
+.carousel.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.carousel.dragging .card {
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel :where(.card, .img) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel .card {
+    scroll-snap-align: start;
+    height: 342px;
+    list-style: none;
+    background: #fff;
+    cursor: pointer;
+    padding-bottom: 15px;
+    flex-direction: column;
+    border-radius: 8px;
+}
+
+.carousel .card .img {
+    background: #8B53FF;
+    
+    height: 148px;
+    width: 148px;
+    border-radius: 50%;
+}
+
+.card img {
+    width: 240px;
+    height: 340px;
+    object-fit: cover;
+    box-shadow: #000;
+    border-radius: 10px;
+}
+
+
+.btn{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgb(72, 175, 72);
+    color: var(--cor-primaria);
+    font-size: 20px;
+    width: 400px;
+    border-radius: 10px;
+    border-color: #b3aeae;
+    margin-bottom: 20px;
+}
+
+
+@media screen and (max-width: 900px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) - 8px); /* Ajustar para 2 imagens visíveis e diminuir espaçamento */
+    }
+
+    .wrapper i:first-child {
+        left: calc(50% - 100px); /* Ajusta a posição para telas menores */
+    }
+
+    .wrapper i:last-child {
+        right: calc(50% - 100px); /* Ajusta a posição para telas menores */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper .carousel {
+        grid-auto-columns: 100%;
+    }
+
+    .wrapper i:first-child {
+        left: calc(50% - 100px); /* Ajusta a posição para telas menores */
+    }
+
+    .wrapper i:last-child {
+        right: calc(50% - 100px); /* Ajusta a posição para telas menores */
+    }
+    .btn{
+        font-size: 15px;
+        width: 250px;
+    }
+}
+
+

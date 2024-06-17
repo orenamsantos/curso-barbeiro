@@ -1,41 +1,74 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const carouselSlide = document.querySelector('.carousel-slide');
-    const carouselImages = document.querySelectorAll('.carousel-slide img');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+const wrapper = document.querySelector(".wrapper");
+const carousel = document.querySelector(".carousel");
+const firstCardWidth = carousel.querySelector(".card").offsetWidth;
+const arrowBtns = document.querySelectorAll(".wrapper button"); // Selecionar ícones em vez de botões
+const carouselChildrens = [...carousel.children];
+let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
 
-    let counter = localStorage.getItem('carouselCounter') || 0;
-    const slideWidth = carouselImages[0].clientWidth; // Largura de uma imagem
+// Limitar a 4 imagens visíveis
+let cardPerView = 4;
 
-    // Atualiza a posição inicial do carrossel com base no contador
-    carouselSlide.style.transform = `translateX(${-slideWidth * counter}px)`;
-
-    // Adiciona evento de clique no botão Próximo
-    nextBtn.addEventListener('click', () => {
-        if (counter < carouselImages.length - 1) {
-            counter++;
-        } else {
-            counter = 0;
-        }
-        updateCarousel();
-    });
-
-    // Adiciona evento de clique no botão Anterior
-    prevBtn.addEventListener('click', () => {
-        if (counter > 0) {
-            counter--;
-        } else {
-            counter = carouselImages.length - 1;
-        }
-        updateCarousel();
-    });
-
-    // Função para atualizar a posição do carrossel
-    function updateCarousel() {
-        carouselSlide.style.transition = 'transform 0.5s ease-in-out';
-        carouselSlide.style.transform = `translateX(${-slideWidth * counter}px)`;
-
-        // Salva o contador atual no localStorage
-        localStorage.setItem('carouselCounter', counter.toString());
-    }
+// Inserir cópias das últimas 4 imagens no início do carrossel para rolagem infinita
+carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
+    carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
 });
+// Inserir cópias das primeiras 4 imagens no final do carrossel para rolagem infinita
+carouselChildrens.slice(0, cardPerView).forEach(card => {
+    carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+});
+
+// Rolar o carrossel na posição apropriada para ocultar as primeiras cópias duplicadas
+carousel.classList.add("no-transition");
+carousel.scrollLeft = carousel.offsetWidth;
+carousel.classList.remove("no-transition");
+
+// Adicionar ouvintes de eventos para os botões de navegação
+arrowBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        carousel.scrollLeft += btn.id === "left" ? -firstCardWidth : firstCardWidth;
+    });
+});
+
+const dragStart = (e) => {
+    isDragging = true;
+    carousel.classList.add("dragging");
+    startX = e.pageX;
+    startScrollLeft = carousel.scrollLeft;
+}
+
+const dragging = (e) => {
+    if (!isDragging) return;
+    carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+}
+
+const dragStop = () => {
+    isDragging = false;
+    carousel.classList.remove("dragging");
+}
+
+const infiniteScroll = () => {
+    if (carousel.scrollLeft === 0) {
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
+        carousel.classList.remove("no-transition");
+    } else if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.offsetWidth;
+        carousel.classList.remove("no-transition");
+    }
+    clearTimeout(timeoutId);
+    if (!wrapper.matches(":hover")) autoPlay();
+}
+
+const autoPlay = () => {
+    if (window.innerWidth < 800 || !isAutoPlay) return;
+    timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
+}
+
+autoPlay();
+carousel.addEventListener("mousedown", dragStart);
+carousel.addEventListener("mousemove", dragging);
+document.addEventListener("mouseup", dragStop);
+carousel.addEventListener("scroll", infiniteScroll);
+wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+wrapper.addEventListener("mouseleave", autoPlay);
