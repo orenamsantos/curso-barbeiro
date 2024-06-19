@@ -77,6 +77,7 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 80%;
 }
 
 
@@ -127,12 +128,17 @@ h5{
     }
 
     p{
+        width: 260px;
         font-size: 12px;
     }
 
     h2{
+        width: 260px;
         font-size: 19px;
         font-weight: 800;
+    }
+    .container{
+        width: 60%;
     }
 }
 
@@ -205,6 +211,10 @@ h5{
 @media (max-width: 768px){
     
     .headTop{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
         width: 350px;
     }
    
@@ -852,13 +862,13 @@ h5{
 
     .bg04section{
         width: 30%;
-    }
-    
-    .bg04section ul{
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
     }
+    
+   
 
     .bg04section ul li h5{
         font-size: 10px;
@@ -872,16 +882,21 @@ h5{
 .cortes {
     text-align: center;
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-items: center;
 }
 
 .cortes h2 {
     margin-bottom: 20px;
+    
 }
 
 .cortesimg1, .cortesimg2, .cortesimg3 {
+    width: 80%;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
@@ -890,10 +905,11 @@ h5{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .cortesimg1 .grupcortes .cortesTexto{
-    margin-top: -20px;
+    margin-top: -10px;
     background-color: var(--cor-primaria);
     padding: 0;
     width: 280px;
@@ -902,15 +918,102 @@ h5{
 }
 
 .cortes img {
-    margin: 10px;
-    border: 2px dashed #ffffff; /* Ajuste a cor conforme necessário */
-    max-width: 100%;
-    height: auto;
+    border: 2px dashed #ffffff; 
+    width: 90%;
 }
 
 .cortes .cortesTexto{
     color: var(--cor-primaria);
 }
 
+@media screen and (max-width: 800px) {
+    .bg04section{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .cortesimg1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .cortes img {
+        border: 2px; 
+        max-width: 500px;
+        height: auto;
+    }
+    .cortesimg1 .grupcortes .cortesTexto{
+        font-size: 15px;
+        width: 210px;
+    }
+}
 
+@media screen and (max-width: 600px) {
+
+    
+
+    .cortesimg1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .grupcortes{
+        margin-bottom: 10px;
+    }
+
+    .cortes img {
+        border: 2px; 
+        max-width: 200px;
+        height: auto;
+    }
+    
+    .cortesimg1 .grupcortes .cortesTexto{
+        font-size: 15px;
+        width: 210px;
+    }
+
+
+    
+    
+}
+
+
+
+
+.bg05{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1D1D1D;
+}
+
+.galery{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   background-color: var(--cor-primaria);
+    
+}
+
+.card{
+    background-color: red;
+}
+
+.grupImg{
+    background-color: #2CA83D;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.grupImg p{
+    color: var(--cor-secundaria);
+}
 
