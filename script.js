@@ -6,7 +6,7 @@ const carouselChildrens = [...carousel.children];
 let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
 
 // Limitar a 4 imagens visíveis
-let cardPerView = 4;
+let cardPerView = 3;
 
 // Inserir cópias das últimas 4 imagens no início do carrossel para rolagem infinita
 carouselChildrens.slice(-cardPerView).reverse().forEach(card => {

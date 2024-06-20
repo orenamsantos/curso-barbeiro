@@ -23,9 +23,6 @@ time, mark, audio, video {
 
 
 
-
-
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
     display: block;
@@ -56,7 +53,7 @@ main{
     align-items: center;
     justify-content: center;
     text-align: center;
-   
+    overflow-x: hidden; /* Evitar rolagem horizontal */
     
 }
 
@@ -71,13 +68,18 @@ main{
     --cor-terciaria: #43DD8B;
 }
 
+.conatinerMestre{
+   display: flex;
+   flex-direction: column;
+}
 
 .container{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80%;
+   
+    width: 90%;
 }
 
 
@@ -122,6 +124,8 @@ h5{
 
 
 @media (max-width: 768px){
+
+   
     h1 {
         font-size: 1.3rem;
         font-weight: 800;
@@ -137,9 +141,8 @@ h5{
         font-size: 19px;
         font-weight: 800;
     }
-    .container{
-        width: 60%;
-    }
+
+
 }
 
 
@@ -508,9 +511,7 @@ h5{
     
 }
 
-.bg03 .container{
-    width: 80%;
-}
+
 
 .bg03logo{
     width: 150px;
@@ -581,6 +582,10 @@ h5{
 
 @media (max-width: 968px){
 
+    .bg03 .container{
+        width: 70%;
+    }
+
     .bg03 .container .text{
         width: 450px;
     }
@@ -621,6 +626,7 @@ h5{
     width: 100%;
     position: relative;
     margin: auto;
+    overflow: hidden;
 }
 
 .wrapper i {
@@ -656,7 +662,7 @@ h5{
 .wrapper .carousel {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: calc((100% / 4) - 8px); /* Ajustar para 4 imagens visíveis e diminuir espaçamento */
+    grid-auto-columns: calc((100% / 3) - 8px); /* Ajustar para 4 imagens visíveis e diminuir espaçamento */
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 8px; /* Diminuir espaçamento entre as imagens */
@@ -754,31 +760,33 @@ h5{
 @media screen and (max-width: 900px) {
 
     .wrapper .carousel {
-        grid-auto-columns: calc((100% / 2) - 8px); /* Ajustar para 2 imagens visíveis e diminuir espaçamento */
+        grid-auto-columns: calc(50% - 8px); /* Ajustar para 2 imagens visíveis */
     }
 
     .wrapper i:first-child {
-        left: calc(50% - 100px); /* Ajusta a posição para telas menores */
+        left: 10px; /* Ajusta a posição para telas menores */
     }
 
     .wrapper i:last-child {
-        right: calc(50% - 100px); /* Ajusta a posição para telas menores */
+        right: 10px; /* Ajusta a posição para telas menores */
     }
 }
 
+/* Ajustes para telas menores que 600px */
 @media screen and (max-width: 600px) {
     .wrapper .carousel {
-        grid-auto-columns: 100%;
+        grid-auto-columns: 100%; /* Ajustar para 1 imagem visível */
     }
 
     .wrapper i:first-child {
-        left: calc(50% - 100px); /* Ajusta a posição para telas menores */
+        left: 10px; /* Ajusta a posição para telas menores */
     }
 
     .wrapper i:last-child {
-        right: calc(50% - 100px); /* Ajusta a posição para telas menores */
+        right: 10px; /* Ajusta a posição para telas menores */
     }
-    .btn{
+
+    .btn {
         font-size: 15px;
         width: 250px;
     }
@@ -787,15 +795,20 @@ h5{
 .bg04 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: #000000; /* Cor de fundo da seção */
     padding: 40px; /* Espaçamento interno */
-    text-align: center; /* Centraliza o conteúdo */
+
 }
 
 .bg04section{
     margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg04section .container{
+    display: flex;
 }
 
 
@@ -834,14 +847,16 @@ h5{
     width: 4px;
     height: 70px;
     margin: 0;
+    z-index: 99px;
 }
 
-.bg04 ul li .textCircle .circle {
+.bg04 ul li .textCircle img {
     position: absolute;
     width: 30px;
     height: 30px;
     background-color: #47DD7F;
     border-radius: 50%;
+    z-index: 1;
 }
 
 .bg04 ul li h5 {
@@ -852,23 +867,24 @@ h5{
 
 
 
+
+
 @media screen and (max-width: 800px) {
-    .bg04section{
-        width: 70%;
+    .bg04{
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-}
-
-@media screen and (max-width: 600px) {
 
     .bg04section{
-        width: 30%;
+        width: 80%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
-    
-   
+
+
 
     .bg04section ul li h5{
         font-size: 10px;
@@ -879,18 +895,16 @@ h5{
 
 
 
-.cortes {
-    text-align: center;
-    margin-top: 20px;
+.container .cortes{
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-items: center;
+    justify-content: center;
 }
 
-.cortes h2 {
+.container .cortes h2 {
     margin-bottom: 20px;
-    
+    margin-top: 5rem;
 }
 
 .cortesimg1, .cortesimg2, .cortesimg3 {
@@ -926,7 +940,12 @@ h5{
     color: var(--cor-primaria);
 }
 
-@media screen and (max-width: 800px) {
+
+
+@media screen and (max-width: 1200px) {
+
+    
+
     .bg04section{
         display: flex;
         flex-direction: column;
@@ -989,31 +1008,100 @@ h5{
     align-items: center;
     justify-content: center;
     background-color: #1D1D1D;
+    width: 100%;
 }
 
-.galery{
-    display: flex;
-    flex-direction: column;
+.bg05 .container{
+   margin-top: 50px;
+}
+
+
+
+.galery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
     align-items: center;
     justify-content: center;
-   background-color: var(--cor-primaria);
-    
+    background-color: #1D1D1D;
 }
 
-.card{
-    background-color: red;
+.card2 {
+    width: 100%;
+    position: relative; /* Adicione esta linha para permitir o posicionamento da faixa */
+    overflow: hidden; /* Adicione esta linha para cortar o conteúdo que excede os limites */
 }
 
-.grupImg{
-    background-color: #2CA83D;
+.grupImg {
+    background-color: var(--cor-primaria);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+   
     align-items: center;
-    
+    padding: 15px;
+    border-radius: 10px;
+    margin: 5px;
+    height: 550px;
+    position: relative;
 }
 
-.grupImg p{
+.grupImg h3, .grupImg p, .grupImg strong {
+   
+    width: 50%;
+    margin: 10px 0;
     color: var(--cor-secundaria);
 }
 
+.grupImg h3{
+    font-size: 20px;
+}
+
+.grupImg img {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.grupImg p{
+    margin-top: 20px;
+    width: 100%;
+    font-weight: 350;
+}
+
+
+.card2::after {
+    width: 160px;
+    content: '+2 Aula Bônus'; /* Texto da faixa */
+    position: absolute;
+    top: 110px;
+    right: -25px;
+    background-color: #3bcb79; /* Cor de fundo da faixa */
+    color: white; /* Cor do texto da faixa */
+    padding: 5px 10px;
+    font-size: 8px;
+    transform: rotate(45deg);
+    transform-origin: top right;
+}
+
+@media screen and (max-width: 900px) {
+    .galery {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+     
+}
+
+@media screen and (max-width: 600px) {
+    .galery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .grupImg img {
+        width: 100%;
+        height: auto;
+    }
+}
