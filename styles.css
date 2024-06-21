@@ -122,6 +122,15 @@ h5{
     margin-bottom: 20px;
 }
 
+button{
+    background-color: #2CA83D;
+    color: var(--cor-primaria);
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+}
+
 
 @media (max-width: 768px){
 
@@ -142,6 +151,10 @@ h5{
         font-weight: 800;
     }
 
+    button{
+        font-size: 10px;
+        border-radius: 10px;
+    }    
 
 }
 
@@ -277,6 +290,7 @@ h5{
 .certificado{
     display: flex;
     flex-direction: column;
+    width: 70%;
     margin-top: 1.5rem;
     justify-content: center;
     align-items: center;
@@ -428,7 +442,7 @@ h5{
 
 .strong00{
     color: white;
-    font-size: 35px;
+    font-size: 25px;
 }
 .strong01 {
     font-size: 50px;
@@ -521,6 +535,12 @@ h5{
 
 .bg03 p{
     color: #000;
+}
+
+.bg03 .text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
@@ -905,6 +925,7 @@ h5{
 .container .cortes h2 {
     margin-bottom: 20px;
     margin-top: 5rem;
+    font-size: 20px;
 }
 
 .cortesimg1, .cortesimg2, .cortesimg3 {
@@ -942,7 +963,7 @@ h5{
 
 
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
 
     
 
@@ -1027,7 +1048,7 @@ h5{
     background-color: #1D1D1D;
 }
 
-.card2 {
+.card2, .card1, .card3 {
     width: 100%;
     position: relative; /* Adicione esta linha para permitir o posicionamento da faixa */
     overflow: hidden; /* Adicione esta linha para cortar o conteúdo que excede os limites */
@@ -1036,8 +1057,7 @@ h5{
 .grupImg {
     background-color: var(--cor-primaria);
     display: flex;
-    flex-direction: column;
-   
+    flex-direction: column; 
     align-items: center;
     padding: 15px;
     border-radius: 10px;
@@ -1047,8 +1067,7 @@ h5{
 }
 
 .grupImg h3, .grupImg p, .grupImg strong {
-   
-    width: 50%;
+    width: 80%;
     margin: 10px 0;
     color: var(--cor-secundaria);
 }
@@ -1058,11 +1077,29 @@ h5{
 }
 
 .grupImg img {
-    width: 230px;
-    height: 230px;
-    object-fit: cover;
-    border-radius: 8px;
+    max-width: 100%; 
+    max-height: 100%; 
+    object-fit: contain;
+    border-radius: 12px;
 }
+
+.galery div:nth-child(1) .grupImg img,
+.galery div:nth-child(2) .grupImg img,
+.galery div:nth-child(3) .grupImg img,
+.galery div:nth-child(4) .grupImg img{
+    width: 250px;
+    height: 250px;
+}
+
+.galery div:nth-child(5) .grupImg img,
+.galery div:nth-child(6) .grupImg img,
+.galery div:nth-child(7) .grupImg img{
+    margin-top: -15px;
+    margin-bottom: -25px;
+    width: 280px;
+    height: 280px;
+}
+
 
 .grupImg p{
     margin-top: 20px;
@@ -1085,12 +1122,46 @@ h5{
     transform-origin: top right;
 }
 
+.card1::after {
+    width: 160px;
+    content: '+1 Aula Bônus'; /* Texto da faixa */
+    position: absolute;
+    top: 110px;
+    right: -25px;
+    background-color: #3bcb79; /* Cor de fundo da faixa */
+    color: white; /* Cor do texto da faixa */
+    padding: 5px 10px;
+    font-size: 8px;
+    transform: rotate(45deg);
+    transform-origin: top right;
+}
+
+.card3::after {
+    width: 160px;
+    content: 'Bônus exclusivo';
+    position: absolute;
+    top: 110px;
+    right: -25px;
+    background-color: #3bcb79; /* Cor de fundo da faixa */
+    color: white; /* Cor do texto da faixa */
+    padding: 5px 10px;
+    font-size: 10px;
+    transform: rotate(45deg);
+    transform-origin: top right;
+}
+
 @media screen and (max-width: 900px) {
     .galery {
         display: flex;
         flex-direction: column;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
+    
+    .galery div{
+        display: flex;
+        width: 280px;
+    }
+
     
      
 }
@@ -1103,5 +1174,73 @@ h5{
     .grupImg img {
         width: 100%;
         height: auto;
+    }
+}
+
+
+.card4{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 5px;
+    height: 430px;
+    width: 350px;
+    position: relative;
+}
+
+.card4 .gruptext{
+    display: flex;
+    width: 350px;
+    text-align: start;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.gruptext:last-child {
+    border-bottom: none; 
+}
+
+
+
+
+.bg06{
+    background-color: #E8E8E8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.galery-tuotrial{
+    width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.grupImg-tuotrial{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    margin: 15px;
+    background-color: var(--cor-primaria);
+    padding: 20px;
+}
+
+.grupImg-tuotrial img{
+    width: 200px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .galery-tuotrial{
+        display: flex;
+        flex-direction: column;
     }
 }
