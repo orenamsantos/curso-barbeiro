@@ -1,74 +1,195 @@
-const wrapper = document.querySelector(".wrapper");
-const carousel = document.querySelector(".carousel");
-const firstCardWidth = carousel.querySelector(".card").offsetWidth;
-const arrowBtns = document.querySelectorAll(".wrapper button"); // Selecionar ícones em vez de botões
-const carouselChildrens = [...carousel.children];
-let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
 
-// Limitar a 4 imagens visíveis
-let cardPerView = 3;
 
-// Inserir cópias das últimas 4 imagens no início do carrossel para rolagem infinita
-carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
-    carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
-});
-// Inserir cópias das primeiras 4 imagens no final do carrossel para rolagem infinita
-carouselChildrens.slice(0, cardPerView).forEach(card => {
-    carousel.insertAdjacentHTML("beforeend", card.outerHTML);
-});
 
-// Rolar o carrossel na posição apropriada para ocultar as primeiras cópias duplicadas
-carousel.classList.add("no-transition");
-carousel.scrollLeft = carousel.offsetWidth;
-carousel.classList.remove("no-transition");
 
-// Adicionar ouvintes de eventos para os botões de navegação
-arrowBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-        carousel.scrollLeft += btn.id === "left" ? -firstCardWidth : firstCardWidth;
+setTimeout(() => {
+    const wrapper = document.querySelector(".wrapper");
+    const carousel = document.querySelector(".carousel");
+    const firstCardWidth = carousel.querySelector(".card").offsetWidth;
+    const arrowBtns = document.querySelectorAll(".wrapper button");
+    const carouselChildrens = [...carousel.children];
+    let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
+
+    let cardPerView = 3;
+
+    carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
+        carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
     });
-});
 
-const dragStart = (e) => {
-    isDragging = true;
-    carousel.classList.add("dragging");
-    startX = e.pageX;
-    startScrollLeft = carousel.scrollLeft;
-}
+    carouselChildrens.slice(0, cardPerView).forEach(card => {
+        carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+    });
 
-const dragging = (e) => {
-    if (!isDragging) return;
-    carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
-}
+    carousel.classList.add("no-transition");
+    carousel.scrollLeft = carousel.offsetWidth;
+    carousel.classList.remove("no-transition");
 
-const dragStop = () => {
-    isDragging = false;
-    carousel.classList.remove("dragging");
-}
+    arrowBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            carousel.scrollLeft += btn.id === "left" ? -firstCardWidth : firstCardWidth;
+        });
+    });
 
-const infiniteScroll = () => {
-    if (carousel.scrollLeft === 0) {
-        carousel.classList.add("no-transition");
-        carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
-        carousel.classList.remove("no-transition");
-    } else if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
-        carousel.classList.add("no-transition");
-        carousel.scrollLeft = carousel.offsetWidth;
-        carousel.classList.remove("no-transition");
+    const dragStart = (e) => {
+        isDragging = true;
+        carousel.classList.add("dragging");
+        startX = e.pageX;
+        startScrollLeft = carousel.scrollLeft;
     }
-    clearTimeout(timeoutId);
-    if (!wrapper.matches(":hover")) autoPlay();
-}
 
-const autoPlay = () => {
-    if (window.innerWidth < 800 || !isAutoPlay) return;
-    timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
-}
+    const dragging = (e) => {
+        if (!isDragging) return;
+        carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+    }
 
-autoPlay();
-carousel.addEventListener("mousedown", dragStart);
-carousel.addEventListener("mousemove", dragging);
-document.addEventListener("mouseup", dragStop);
-carousel.addEventListener("scroll", infiniteScroll);
-wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
-wrapper.addEventListener("mouseleave", autoPlay);
+    const dragStop = () => {
+        isDragging = false;
+        carousel.classList.remove("dragging");
+    }
+
+    const infiniteScroll = () => {
+        if (carousel.scrollLeft === 0) {
+            carousel.classList.add("no-transition");
+            carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
+            carousel.classList.remove("no-transition");
+        } else if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
+            carousel.classList.add("no-transition");
+            carousel.scrollLeft = carousel.offsetWidth;
+            carousel.classList.remove("no-transition");
+        }
+        clearTimeout(timeoutId);
+        if (!wrapper.matches(":hover")) autoPlay();
+    }
+
+    const autoPlay = () => {
+        if (window.innerWidth < 800 || !isAutoPlay) return;
+        timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
+    }
+
+    autoPlay();
+    carousel.addEventListener("mousedown", dragStart);
+    carousel.addEventListener("mousemove", dragging);
+    document.addEventListener("mouseup", dragStop);
+    carousel.addEventListener("scroll", infiniteScroll);
+    wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+    wrapper.addEventListener("mouseleave", autoPlay);
+
+
+
+    function toggleContent(buttonId, contentId, pointsId, setaId) {
+        var pontos = document.getElementById(pointsId);
+        var maisTexto = document.getElementById(contentId);
+        var btnLeiaMais = document.getElementById(buttonId);
+        var seta = document.getElementById(setaId);
+        
+        if (pontos.style.display === "none") {
+            pontos.style.display = "inline";
+            maisTexto.style.display = "none";
+            btnLeiaMais.innerHTML = btnLeiaMais.innerHTML.replace("Leia Menos", "Leia Mais");
+            seta.classList.remove('rotated');
+        } else {
+            pontos.style.display = "none";
+            maisTexto.style.display = "block";
+            btnLeiaMais.innerHTML = btnLeiaMais.innerHTML.replace("Leia Mais", "Leia Menos");
+            seta.classList.add('rotated');
+        }
+    }
+    
+    document.getElementById('btnLeiaMais').addEventListener('click', function() {
+        toggleContent('btnLeiaMais', 'mais01', 'pontos', 'seta01');
+    });
+    
+    document.getElementById('btnLeiaMais02').addEventListener('click', function() {
+        toggleContent('btnLeiaMais02', 'mais02', 'pontos02', 'seta02');
+    });
+
+    document.getElementById('btnLeiaMais03').addEventListener('click', function() {
+        toggleContent('btnLeiaMais03', 'mais03', 'pontos03', 'seta03');
+    });
+    document.getElementById('btnLeiaMais04').addEventListener('click', function() {
+        toggleContent('btnLeiaMais04', 'mais04', 'pontos04', 'seta04');
+    });
+    document.getElementById('btnLeiaMais05').addEventListener('click', function() {
+        toggleContent('btnLeiaMais05', 'mais05', 'pontos05', 'seta05');
+    });
+
+    document.getElementById('btnLeiaMais06').addEventListener('click', function() {
+        toggleContent('btnLeiaMais06', 'mais06', 'pontos06', 'seta06');
+    });
+    document.getElementById('btnLeiaMais07').addEventListener('click', function() {
+        toggleContent('btnLeiaMais07', 'mais07', 'pontos07', 'seta07');
+    });
+    document.getElementById('btnLeiaMais08').addEventListener('click', function() {
+        toggleContent('btnLeiaMais08', 'mais08', 'pontos08', 'seta08');
+    });
+    document.getElementById('btnLeiaMais09').addEventListener('click', function() {
+        toggleContent('btnLeiaMais09', 'mais09', 'pontos09', 'seta09');
+    });
+    document.getElementById('btnLeiaMais10').addEventListener('click', function() {
+        toggleContent('btnLeiaMais10', 'mais10', 'pontos10', 'seta10');
+    });
+    document.getElementById('btnLeiaMais11').addEventListener('click', function() {
+        toggleContent('btnLeiaMais11', 'mais11', 'pontos11', 'seta11');
+    });
+    document.getElementById('btnLeiaMais12').addEventListener('click', function() {
+        toggleContent('btnLeiaMais12', 'mais12', 'pontos12', 'seta12');
+    });
+    document.getElementById('btnLeiaMais13').addEventListener('click', function() {
+        toggleContent('btnLeiaMais13', 'mais13', 'pontos13', 'seta13');
+    });
+    document.getElementById('btnLeiaMais14').addEventListener('click', function() {
+        toggleContent('btnLeiaMais1', 'mais14', 'pontos14', 'seta14');
+    });
+    document.getElementById('btnLeiaMais15').addEventListener('click', function() {
+        toggleContent('btnLeiaMais15', 'mais15', 'pontos15', 'seta15');
+    });
+    
+
+
+
+
+
+
+
+
+    const infoArray = [
+        "Informação 1",
+        "Informação 2",
+        "Informação 3",
+        "Informação 4",
+        "Informação 5"
+    ];
+    
+    // Função para exibir o alerta
+    function showAlert() {
+        // Seleciona ou cria o elemento de alerta
+        let alertElement = document.getElementById('randomAlert');
+        if (!alertElement) {
+            alertElement = document.createElement('div');
+            alertElement.id = 'randomAlert';
+            alertElement.className = 'alerta';
+            document.body.appendChild(alertElement);
+        }
+    
+        // Seleciona uma informação aleatória do array
+        const randomInfo = infoArray[Math.floor(Math.random() * infoArray.length)];
+    
+        // Define o conteúdo do alerta
+        alertElement.innerHTML = randomInfo;
+    
+        // Exibe o alerta
+        alertElement.style.display = 'block';
+        alertElement.style.opacity = 1;
+    
+        // Oculta o alerta após 5 segundos
+        setTimeout(() => {
+            alertElement.style.opacity = 0;
+            setTimeout(() => {
+                alertElement.style.display = 'none';
+            }, 500); // Tempo da transição de opacidade
+        }, 5000);
+    }
+    
+    // Chama a função showAlert a cada 10 segundos
+    setInterval(showAlert, 10000);
+}, 1000);
