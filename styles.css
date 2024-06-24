@@ -220,8 +220,8 @@ button:hover{
 }
 
 iframe{
-    width: "560px";
-    height: "315px"
+    width: 560px;
+    height: 315px
 }
 
 @media (max-width: 1200px){
@@ -252,13 +252,13 @@ iframe{
     .video-container{
         display: flex;
         justify-content: center;
-        width: 300px;
+        width: 450px;
         height: 200px;
         margin-bottom: 8rem;
     }
 
     iframe{
-        width: 300px;
+        width: 450px;
     }
 
     .video-p2{
@@ -1561,7 +1561,7 @@ iframe{
     display: flex;
     align-items: center;
     background-color: var(--cor-primaria);
-    width: 100%;
+    width: 800px;
     color: #000;
     border: none;
     font-size: 12px;
@@ -1589,10 +1589,18 @@ iframe{
 .bg12 #mais15 {
     background-color: var(--cor-primaria);
     display: none;
-    width: 84%;
+    width: 810px;
     text-align: start;
-    padding: 5px;
+    padding: 15px;
     font-size: 10px;
+    font-weight: 500;
+    margin-bottom: 3px;
+    padding-bottom: 30px;
+}
+
+.bg12 .mais-texto{
+    font-weight: 500;
+   
 }
 
 
