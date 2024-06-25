@@ -252,8 +252,8 @@ iframe{
     .video-container{
         display: flex;
         justify-content: center;
-        width: 450px;
-        height: 200px;
+        width: 400px;
+        height: 150px;
         margin-bottom: 8rem;
     }
 
@@ -1461,10 +1461,71 @@ iframe{
     width: 280px;
 }
 
+.bg10 .box-contador{
+    width: 500px;
+    border-radius: 10px;
+    background-color: var(--cor-secundaria);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg10 .contandor{
+    display: flex;
+}
+
+.bg10 .time{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.bg10 .time-texto {
+    
+    width: 300px;
+}
+
+.bg10 .time-texto strong{
+    color: var(--cor-primaria);
+    font-size: 8PX;
+    font-weight: 500;
+   margin-left: 25px;
+}
+
+.bg10 .time-icons{
+    color: var(--cor-primaria);
+    font-size: 10px;
+    margin: 20px;
+}
+
+.bg10 .time .boxs{
+    width: 50px;
+    height: 50px;
+    font-size: 12PX;
+    color: RED;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin: 0px 8px;
+}
+
+
+
+
+
+
 @media (max-width: 900px){
     .bg10 .strong01bg10{
         font-size: 10px;
         width: 280px;
+    }
+    .bg10 .box-contador{
+        width: 350px;
     }
 }
 
@@ -1620,8 +1681,25 @@ iframe{
     .bg12 .btn12-01{
         width: 40%;
      }
-}
 
+    .bg12 #mais01,
+    .bg12 #mais02,
+    .bg12 #mais03,
+    .bg12 #mais04,
+    .bg12 #mais05,
+    .bg12 #mais06,
+    .bg12 #mais07,
+    .bg12 #mais08,
+    .bg12 #mais09,
+    .bg12 #mais10,
+    .bg12 #mais11,
+    .bg12 #mais12,
+    .bg12 #mais13,
+    .bg12 #mais14,
+    .bg12 #mais15 {
+            width: 305px;
+        }
+    }
 
 .bg13{
     background-color: var(--cor-primaria);

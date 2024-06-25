@@ -145,51 +145,47 @@ setTimeout(() => {
     });
     
 
+    let days = 0,
+            hours = 17,
+            minutes = 27,
+            seconds = 59;
 
+        function updateCountdown() {
+            if (seconds === 0 && minutes === 0 && hours === 0 && days === 0) {
+                clearInterval(time);
+                return;
+            }
 
+            if (seconds === 0) {
+                seconds = 59;
+                if (minutes === 0) {
+                    minutes = 59;
+                    if (hours === 0) {
+                        hours = 23;
+                        if (days > 0) {
+                            days--;
+                        }
+                    } else {
+                        hours--;
+                    }
+                } else {
+                    minutes--;
+                }
+            } else {
+                seconds--;
+            }
 
-
-
-
-
-    const infoArray = [
-        "Informação 1",
-        "Informação 2",
-        "Informação 3",
-        "Informação 4",
-        "Informação 5"
-    ];
-    
-    // Função para exibir o alerta
-    function showAlert() {
-        // Seleciona ou cria o elemento de alerta
-        let alertElement = document.getElementById('randomAlert');
-        if (!alertElement) {
-            alertElement = document.createElement('div');
-            alertElement.id = 'randomAlert';
-            alertElement.className = 'alerta';
-            document.body.appendChild(alertElement);
+            document.querySelector(".days").innerText = String(days).padStart(2, '0');
+            document.querySelector(".hours").innerText = String(hours).padStart(2, '0');
+            document.querySelector(".minutes").innerText = String(minutes).padStart(2, '0');
+            document.querySelector(".seconds").innerText = String(seconds).padStart(2, '0');
         }
+
+        let time = setInterval(updateCountdown, 1000);
     
-        // Seleciona uma informação aleatória do array
-        const randomInfo = infoArray[Math.floor(Math.random() * infoArray.length)];
-    
-        // Define o conteúdo do alerta
-        alertElement.innerHTML = randomInfo;
-    
-        // Exibe o alerta
-        alertElement.style.display = 'block';
-        alertElement.style.opacity = 1;
-    
-        // Oculta o alerta após 5 segundos
-        setTimeout(() => {
-            alertElement.style.opacity = 0;
-            setTimeout(() => {
-                alertElement.style.display = 'none';
-            }, 500); // Tempo da transição de opacidade
-        }, 5000);
-    }
-    
-    // Chama a função showAlert a cada 10 segundos
-    setInterval(showAlert, 10000);
-}, 1000);
+
+   
+
+ 
+
+}, 3000);
