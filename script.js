@@ -185,7 +185,40 @@ setTimeout(() => {
     
 
    
+       
 
+
+        
  
 
 }, 3000);
+
+
+
+const nomes = [
+    "Guilherme Nathan Neri Souza",
+    "Fernanda Oliveira",
+    "Pedro Henrique Lima",
+    "Ana Clara Silva",
+    "Rafael Santos",
+    "Juliana Oliveira",
+    "Marcos Costa"
+];
+
+function showFloatingDiv() {
+    const floatingDiv = document.getElementById('floatingDiv');
+    const randomNome = nomes[Math.floor(Math.random() * nomes.length)]; // Escolhe um nome aleatório da lista
+
+    // Atualiza o nome na div
+    floatingDiv.querySelector('.nomes').textContent = randomNome;
+
+    floatingDiv.style.display = 'block'; // Exibe a div
+
+    setTimeout(() => {
+        floatingDiv.style.display = 'none'; // Oculta a div após 2 segundos
+    }, 2000);
+}
+
+setInterval(showFloatingDiv, 10000); // Chama showFloatingDiv a cada 10 segundos
+window.onload = showFloatingDiv; // Exibe a div quando a página carrega
+

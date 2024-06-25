@@ -1739,20 +1739,27 @@ iframe{
 
 
 
-
-
-
-alerta {
+.floating-div {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: #f8d7da;
-    color: #721c24;
+    display: flex;
+    width: 280px;
+    left: 10px;
+    bottom: 10px;
     padding: 10px;
-    border: 1px solid #f5c6cb;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    display: none; /* Esconde o alerta inicialmente */
-    transition: opacity 0.5s ease;
+    display: none; /* Começa oculto */
 }
+
+
+.floating-div img{
+    width: 50px;
+}
+
+
+.floating-div strong{
+    font-size: 10px;
+}
+
+
