@@ -1,8 +1,10 @@
 
 
 
-
+//*****tempo segurando o js****///
 setTimeout(() => {
+
+    //*****carousel*********/
     const wrapper = document.querySelector(".wrapper");
     const carousel = document.querySelector(".carousel");
     const firstCardWidth = carousel.querySelector(".card").offsetWidth;
@@ -76,6 +78,8 @@ setTimeout(() => {
 
 
 
+
+    //***ler mais conteudo da select bg12 ** */
     function toggleContent(buttonId, contentId, pointsId, setaId) {
         var pontos = document.getElementById(pointsId);
         var maisTexto = document.getElementById(contentId);
@@ -94,6 +98,8 @@ setTimeout(() => {
             seta.classList.add('rotated');
         }
     }
+
+
     
     document.getElementById('btnLeiaMais').addEventListener('click', function() {
         toggleContent('btnLeiaMais', 'mais01', 'pontos', 'seta01');
@@ -145,6 +151,8 @@ setTimeout(() => {
     });
     
 
+    //*****relegio******/
+
     let days = 0,
             hours = 17,
             minutes = 27,
@@ -188,13 +196,8 @@ setTimeout(() => {
        
 
 
+//*****nomes que compraram o curso*****/
         
- 
-
-}, 3000);
-
-
-
 const nomes = [
     "Guilherme Nathan Neri Souza",
     "Fernanda Oliveira",
@@ -207,18 +210,25 @@ const nomes = [
 
 function showFloatingDiv() {
     const floatingDiv = document.getElementById('floatingDiv');
-    const randomNome = nomes[Math.floor(Math.random() * nomes.length)]; // Escolhe um nome aleatório da lista
+    const randomNome = nomes[Math.floor(Math.random() * nomes.length)];
 
-    // Atualiza o nome na div
+    
     floatingDiv.querySelector('.nomes').textContent = randomNome;
 
-    floatingDiv.style.display = 'block'; // Exibe a div
+    floatingDiv.style.display = 'block';
 
     setTimeout(() => {
-        floatingDiv.style.display = 'none'; // Oculta a div após 2 segundos
+        floatingDiv.style.display = 'none'; 
     }, 2000);
 }
 
 setInterval(showFloatingDiv, 10000); // Chama showFloatingDiv a cada 10 segundos
 window.onload = showFloatingDiv; // Exibe a div quando a página carrega
+        
+ 
+
+}, 3000);
+
+
+
 
