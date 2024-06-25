@@ -232,3 +232,37 @@ window.onload = showFloatingDiv; // Exibe a div quando a página carrega
 
 
 
+
+//buntons*************************
+
+
+
+//botão linha 82 colocar direto o link nele pois é uma tag <a>
+
+
+//botão linha 154
+function irParaLink() {
+    // Altere a URL abaixo para o link desejado
+    window.location.href = "https://www.youtube.com/";
+}
+
+//botão linha 589
+function irParaLink2() {
+    // Altere a URL abaixo para o link desejado
+    window.location.href = "https://www.youtube.com/";
+}
+
+//botão linha 637
+function irParaLink3() {
+    // Altere a URL abaixo para o link desejado
+    window.location.href = "https://www.youtube.com/";
+}
+
+
+//botão linha 750 (bg10)colocar direto o link nele pois é uma tag <a>
+
+function irParaLink4() {
+    window.location.href = "https://www.youtube.com/";
+}
+
+
