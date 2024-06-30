@@ -2,6 +2,15 @@
 <html lang="pt-br">
 
 <head>
+
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K2KM3MBL');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +22,16 @@
 </head>
 
 <body>
+    <!--pré loader 1-->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    
+   <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2KM3MBL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <main>
         <div class="conatinerMestre">
             <section class="bg01">
@@ -1100,6 +1119,14 @@
     </main>
 
     <script src="script.js"></script>
+
+    <!--Pre loader embaixo-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            document.getElementById("preloader").style.display = "none";
+        });
+    </script>
+    
 </body>
 
 </html>
